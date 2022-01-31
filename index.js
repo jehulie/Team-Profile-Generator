@@ -27,9 +27,9 @@ const generateHTML = require('./src/generateHTML');
 //     },
 //   ])
 //   .then((answers) => {
-    const htmlPageContent = generateHTML(answers);
+//     const htmlPageContent = generateHTML(answers);
 
-    fs.writeFile('./dist/index.html', htmlPageContent, (err) =>
-      err ? console.log(err) : console.log('Successfully created index.html!')
-    );
-  });
+//     fs.writeFile('./dist/index.html', htmlPageContent, (err) =>
+//       err ? console.log(err) : console.log('Successfully created index.html!')
+//     );
+//   });
