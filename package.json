@@ -1,0 +1,21 @@
+{"name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "Unit 10 homework",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node index",
+    "watch": "nodemon index",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0",
+    "install": "^0.13.0",
+    "npm": "^8.4.1"
+  }
+}
