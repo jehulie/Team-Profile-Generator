@@ -1,12 +1,16 @@
-// All the inquirer helper functions: getName(), getId(), getEmail(), getRole(), getofficeNumber(), getGithub(), getSchool()
+// Inquirer helper function
 const inquirer = require('inquirer');
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 let manager = [];
 let engineer = [];
 let intern = [];
 let employeeArr = {manager, engineer, intern};
 
-function askTeamMember() {
+function Prompt() {
     return inquirer
     .prompt([
     {
@@ -17,7 +21,7 @@ function askTeamMember() {
     },
     {
         type:'text',
-        name: 'employee',
+        name: 'name',
         message: "What is the Employee's name?"
     },
     {
@@ -30,7 +34,7 @@ function askTeamMember() {
         name: 'email',
         message: "What is the employee's email?"
     }])
-    .then(({employee, id, email, role}) => {
+    .then(({name, id, email, role}) => {
         if (role === "Manager") {
             return inquirer
                 .prompt([{
@@ -41,12 +45,12 @@ function askTeamMember() {
                 {
                     type:'confirm',
                     name:'anotherEntry',
-                    message: "What you like to add another employee?",
+                    message: "Would you like to add another employee?",
                     default: false
                 }])
                 .then(({office, anotherEntry}) => {
-                    manager.push(new Manager(employee, id, email, office))
-                    // console.log(employeeArr)
+                    manager.push(new Manager(name, id, email, office))
+                    console.log(employeeArr)
                     if (anotherEntry) {
                         return Prompt();
                     }
@@ -65,8 +69,8 @@ function askTeamMember() {
                     default: false
                 }])
                 .then(({github, anotherEntry}) => {
-                    engineer.push(new Engineer(employee, id, email, github))
-                    // console.log(employeeArr)
+                    engineer.push(new Engineer(name, id, email, github))
+                    console.log(employeeArr)
                     if (anotherEntry) {
                         return Prompt();
                     }
@@ -85,8 +89,8 @@ function askTeamMember() {
                     default: false
                 }])
                 .then(({school, anotherEntry}) => {
-                    intern.push(new Intern(employee, id, email, school))
-                    // console.log(employeeArr)
+                    intern.push(new Intern(name, id, email, school))
+                    console.log(employeeArr)
                     if (anotherEntry) {
                         return Prompt();
                     }
@@ -95,4 +99,4 @@ function askTeamMember() {
     })
 };
 
-// module.exports = askTeamMember
+module.exports = Prompt

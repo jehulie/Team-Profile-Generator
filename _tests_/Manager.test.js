@@ -24,7 +24,7 @@ describe('Manager class', () => {
     });
 
     it('should return false if role is not manager', () => {
-        const role = new Employee.getRole(!'Manager');
+        const role = new Manager.getRole(!'Manager');
 
         expect(role).toEqual(false);
     });

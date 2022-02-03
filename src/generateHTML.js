@@ -2,6 +2,50 @@ const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer')
 const Intern = require('../lib/Intern')
 
+// A function to generate team member cards
+const generateCards = employeeArr => {
+ 
+    const manager = employeeArr.manager.map(function(job) {
+        let managerHtml = `
+        <div class="card" style="width: 18rem;">
+            <h2>${job.name}</h2>
+            <h4>Manager<h4>
+            <p>ID: ${job.id}</p>
+            <p>Email: <a href="mailto:${job.email}">${job.email}</a></p>
+            <p>Office Number: ${job.office}</p>
+        </div>
+        `
+        return managerHtml
+    });
+
+    const engineer = employeeArr.engineer.map(function(job) {
+        let engineerHtml = `
+        <div class="card" style="width: 18rem;">
+            <h2>${job.name}</h2>
+            <h4>Engineer<h4>
+            <p>ID: ${job.id}</p>
+            <p>Email: <a href="mailto:${job.email}">${job.email}</a></p>
+            <p> Github: <a href="https://github.com/${job.github}" target="_blank">${job.github}</a></p>
+        </div>
+        `
+        return engineerHtml
+    })
+
+    const intern = employeeArr.intern.map(function(job) {
+        let interHtml = `
+        <div class="card" style="width: 18rem;">
+            <h2>${job.name}</h2>
+            <h4>Intern<h4>
+            <p>ID: ${job.id}</p>
+            <p>Email: <a href="mailto:${job.email}">${job.email}</a></p>
+            <p> School: ${job.school}</p>
+        </div>
+        `
+        return interHtml
+    })
+    return [manager,engineer,intern]
+}
+
 // A function to generate HTML content
 
 function generateHTML (employeeArr) {
@@ -26,83 +70,5 @@ ${generateCards(employeeArr)}
 </body>
 </html>`
 };
-
-// A function to generate team member cards
-
-// function generateCards(team) {
-//     let cards = []
-//     for(let i = 0; i < team.length; i++) {
-//       const teamArray = team[i];
-//       switch(teamArray.getRole()) {
-//         case 'Manager':
-//           const manager = new Manager(teamArray.id, teamArray.name, teamArray.email, teamArray.officeNumber);
-//           cards.push(generateManagerCard(manager));
-//           break;
-//         case 'Engineer':
-//           const engineer = new Engineer(teamArray.id, teamArray.name, teamArray.email, teamArray.github);
-//           cards.push(generateEngineerCard(engineer));
-//           break;
-//         case 'Intern':
-//           const intern = new Intern(teamArray.id, teamArray.name, teamArray.email, teamArray.school);
-//           cards.push(generateInternCard(intern));
-//           break;
-//       }
-//     }
-//     return cards.join(``)
-//   }
-  
-//   let generateManagerCard = (Manager) => {
-//     return `
-//     <div class="card m-1 shadow" style="width: 18rem">
-//       <div class='card-header'>
-//         <h3 class="card-title">${Manager.getName()}</h3>
-//         <h6 class="card-text"><i class="fa fa-coffee"></i> ${Manager.getRole()}</h6>
-//       </div>
-//       <div class="card-body">
-//         <ul class="list-group list-group-flush">
-//           <li class="list-group-item">ID: ${Manager.getId()}</li>
-//           <li class="list-group-item">Email: ${Manager.getEmail()}</li>
-//           <li class="list-group-item">Office Number: ${Manager.getOfficeNumber()}</li>
-//         </ul>
-//       </div>
-//     </div>
-//     `
-//   }
-  
-//   let generateEngineerCard = (Engineer) => {
-//     return `
-//     <div class="card m-1 shadow" style="width: 18rem">
-//       <div class='card-header'>
-//         <h3 class="card-title">${Engineer.getName()}</h3>
-//         <h6 class="card-text"><i class="fa fa-laptop"></i> ${Engineer.getRole()}</h6>
-//       </div>
-//       <div class="card-body">
-//         <ul class="list-group list-group-flush">
-//           <li class="list-group-item">ID: ${Engineer.getId()}</li>
-//           <li class="list-group-item">Email: ${Engineer.getEmail()}</li>
-//           <li class="list-group-item">GitHub: ${Engineer.getGithub()}</li>
-//         </ul>
-//       </div>
-//     </div>
-//     `
-//   };
-  
-//   let generateInternCard = (Intern) => {
-//     return `
-//     <div class="card m-1 shadow" style="width: 18rem">
-//       <div class='card-header'>
-//         <h3 class="card-title">${Intern.getName()}</h3>
-//         <h6 class="card-text"><i class="fa fa-graduation-cap"></i> ${Intern.getRole()}</h6>
-//       </div>
-//       <div class="card-body">
-//         <ul class="list-group list-group-flush">
-//           <li class="list-group-item">ID: ${Intern.getId()}</li>
-//           <li class="list-group-item">Email: ${Intern.getEmail()}</li>
-//           <li class="list-group-item">School: ${Intern.getSchool()}</li>
-//         </ul>
-//       </div>
-//     </div>
-//     `
-//   }
 
 module.exports = generateHTML;

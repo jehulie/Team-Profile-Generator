@@ -48,12 +48,11 @@ describe('Employee class', () => {
     const role = new Employee.getRole('Employee');
 
     expect(role).toEqual(true);
-  });
+});
 
-  it('should return false if role is not employee', () => {
+it('should return false if role is not employee', () => {
     const role = new Employee.getRole(!'Employee');
 
     expect(role).toEqual(false);
-  });
-
+});
 });
