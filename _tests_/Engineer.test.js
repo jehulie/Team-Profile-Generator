@@ -1,32 +1,26 @@
-const Engineer = require('..lib/Engineer');
+const Engineer = require('../lib/Engineer');
 
 describe('Engineer class', () => {
+    // Positive tests:
     it('Creates an object with four properties', () => {
         const engineer = new Engineer('Bob', '1', 'bob@email.com', 'bobGithub01');
 
         expect(engineer.github).toEqual("bobGithub01");
     });
 
-    it("should throw an error if github value is not provided", () => {
-        const cb = () => new Employee.getGithub();
+    it('should return role as engineer', () => {
+        const engineer = new Engineer('Bob', '1', 'bob@email.com', 'bobGithub01');
 
-        // Define the error message that is expected to be thrown
-        const err = new Error(err);
+        expect(engineer.getRole()).toEqual('Engineer');
+    });
+
+    // Null test:
+    it("should throw an error if github value is not provided", () => {
+        const cb = () => new Engineer.getGithub();
 
         // Verify that the correct error was thrown when the callback is executed
-        expect(cb).toThrowError(err);
-    });
-
-    it('should return true if role is engineer', () => {
-        const role = new Employee.getRole('Engineer');
-
-        expect(role).toEqual(true);
-    });
-
-    it('should return false if role is not engineer', () => {
-        const role = new Engineer.getRole(!'Engineer');
-
-        expect(role).toEqual(false);
+        expect(cb).toThrowError();
     });
 
 });
+
